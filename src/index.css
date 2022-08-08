@@ -14,5 +14,10 @@ nav {
 .content {
   min-height: calc(100vh - 134px);
   padding: 1.5rem 0
+}
 
+.movies {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
 }
