@@ -1,5 +1,6 @@
 import React, {Component} from "react"
 import { Movies } from "../components/Movies"
+import Spinner from "../components/spinner"
 
 export default class Main extends Component {
    state = {
@@ -20,7 +21,7 @@ componentDidMount() {
          {
             movies.length ? 
             <Movies movies={this.state.movies} /> : 
-            <h3>Loading...</h3>
+            <Spinner />
          } 
          </main>
       )
