@@ -10,13 +10,18 @@ export default class Search extends Component {
          this.props.searchMovies(this.state.search)
       }
    }
+   // handleKey = (event) => {
+   //    const search = event.target.value
+   //    this.setState({search})
+   //    this.props.searchMovies(this.state.search)
+   // }
 
    render() {
 
       return (
          <div className="row">
-           <div className="col s12">
-             <div className="input-field">
+
+            <div className="input-field">
                <input 
                   className="validate" 
                   placeholder="Search" 
@@ -26,10 +31,11 @@ export default class Search extends Component {
                   onChange={(e) => this.setState({search: e.target.value})}
                   onKeyDown={this.handleKey}
                />
-             </div>
-           </div>
+            <button className="btn search-btn" onClick={() => this.props.searchMovies(this.state.search)}>Search</button>
+            </div>
+
          </div>       
       )
 
    }
-}
+}               
