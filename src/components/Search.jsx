@@ -13,69 +13,74 @@ export default class Search extends Component {
   };
 
   handleFilter = (event) => {
-    this.setState(() => ({ type: event.target.dataset.type }), () => {
-       this.props.searchMovies(this.state.search, this.state.type);
-    });
-
+    this.setState(
+      () => ({ type: event.target.dataset.type }),
+      () => {
+        this.props.searchMovies(this.state.search, this.state.type);
+      }
+    );
   };
 
   render() {
     return (
       <div className="row">
-        <div className="input-field">
+        <div className="input-group mb-3">
           <input
-            className="validate"
-            placeholder="Search"
-            id="search"
             type="text"
+            className="form-control"
+            id="search"
+            aria-describedby="emailHelp"
+            placeholder="Search"
             value={this.state.search}
             onChange={(e) => this.setState({ search: e.target.value })}
             onKeyDown={this.handleKey}
           />
           <button
-            className="btn search-btn"
-            onClick={() => this.props.searchMovies(this.state.search, this.state.type)}
+            className="btn btn-primary"
+            onClick={() =>
+              this.props.searchMovies(this.state.search, this.state.type)
+            }
           >
             Search
           </button>
         </div>
 
-        <div className="row">
-          <label className="col s4">
+        <div className="btn-group" role="group">
+          <div className="form-check search-btn">
             <input
-              className="with-gap"
-              name="type"
+              className="form-check-input"
               type="radio"
+              name="type"
               data-type="all"
               onChange={this.handleFilter}
-              checked={this.state.type === 'all'}
+              checked={this.state.type === "all"}
             />
             <span>All</span>
-          </label>
+          </div>
 
-          <label className="col s4">
+          <div className="form-check search-btn">
             <input
-              className="with-gap"
-              name="type"
+              className="form-check-input"
               type="radio"
+              name="type"
               data-type="movie"
               onChange={this.handleFilter}
-              checked={this.state.type === 'movie'}
+              checked={this.state.type === "movie"}
             />
             <span>Movie</span>
-          </label>
+          </div>
 
-          <label className="col">
+          <div className="form-check search-btn">
             <input
-              className="with-gap"
-              name="type"
+              className="form-check-input"
               type="radio"
+              name="type"
               data-type="series"
               onChange={this.handleFilter}
-              checked={this.state.type === 'series'}
+              checked={this.state.type === "series"}
             />
             <span>Serials</span>
-          </label>
+          </div>
         </div>
       </div>
     );

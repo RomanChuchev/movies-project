@@ -1,15 +1,14 @@
-function Header(){
-   return (
-   <nav className="indigo accent-4">
-      <div className="nav-wrapper">
-         <a href="#" className="brand-logo">React Movies</a>
-         <ul id="nav-mobile" className="right hide-on-med-and-down">
-         <li><a href="!#">Repo</a></li>
-         
-         </ul>
+function Header() {
+  return (
+    <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
+      <div className="container-fluid">
+        <h1 className="navbar-brand">React Movies</h1>
+        <button className="btn btn-secondary btn-header" type="button">
+          Repo
+        </button>
       </div>
-   </nav>
-   )
+    </nav>
+  );
 }
 
-export {Header}
+export { Header };
