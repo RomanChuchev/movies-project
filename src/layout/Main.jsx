@@ -1,5 +1,4 @@
 import React, {Component} from "react"
-import ErrorIndicator from "../components/error-indicator"
 import { Movies } from "../components/Movies"
 import Search from "../components/Search"
 import Spinner from "../components/spinner"
@@ -10,42 +9,33 @@ export default class Main extends Component {
 
       this.state = {
          movies: [],
-       hasError: false
+         loading: true
       }
 
       this.searchMovies = this.searchMovies.bind(this)
    }
 
    componentDidMount() {
-      fetch('http://www.omdbapi.com/?apikey=347de6a3&s=matrix')
+      fetch(`http://www.omdbapi.com/?apikey=347de6a3&s=matrix`)
          .then(response => response.json())
-         .then(data => this.setState({movies: data.Search}))
+         .then(data => this.setState({movies: data.Search, loading: false}))
    }
 
-   componentDidCatch() {
-      this.setState({ hasError: true });
-    }
-
-   searchMovies(str) {
-      fetch(`http://www.omdbapi.com/?apikey=347de6a3&s=${str}`)
+   searchMovies(str, type = 'all') {
+      this.setState({loading: true})
+      fetch(`http://www.omdbapi.com/?apikey=347de6a3&s=${str}${type !== 'all' ? `&type=${type}` : ''}`)
          .then(response => response.json())
-         .then(data => this.setState({movies: data.Search}))   
+         .then(data => this.setState({movies: data.Search, loading: false}))   
    }
 
    render() {
-   const {movies} = this.state
+   const {movies, loading} = this.state
 
-   if (this.state.hasError) {
-      return <ErrorIndicator />
-    }
+
       return (
          <main className="container content">
             <Search searchMovies={this.searchMovies}/>
-         {
-            movies.length ? 
-            <Movies movies={this.state.movies} /> : 
-            <Spinner />
-         } 
+         { loading ? <Spinner /> : <Movies movies={movies} /> } 
          </main>
       )
    }
