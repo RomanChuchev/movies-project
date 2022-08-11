@@ -8,7 +8,7 @@ function Movie(props) {
   } = props;
 
   return (
-    <div className="card text-white bg-dark mb-3" id={id}>
+    <div className="movie card text-white bg-dark mb-3" id={id}>
       <div>
         {poster === "N/A" ? (
           <img className="card-img-top" />

@@ -9,16 +9,10 @@ export default class Main extends Component {
 
     this.state = {
       movies: [],
-      loading: true,
+      loading: false,
     };
 
     this.searchMovies = this.searchMovies.bind(this);
-  }
-
-  componentDidMount() {
-    fetch(`http://www.omdbapi.com/?apikey=347de6a3&s=matrix`)
-      .then((response) => response.json())
-      .then((data) => this.setState({ movies: data.Search, loading: false }));
   }
 
   searchMovies(str, type = "all") {
