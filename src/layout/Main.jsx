@@ -18,12 +18,16 @@ export default class Main extends Component {
   searchMovies(str, type = "all") {
     this.setState({ loading: true });
     fetch(
-      `http://www.omdbapi.com/?apikey=347de6a3&s=${str}${
+      `https://www.omdbapi.com/?apikey=347de6a3&s=${str}${
         type !== "all" ? `&type=${type}` : ""
       }`
     )
       .then((response) => response.json())
-      .then((data) => this.setState({ movies: data.Search, loading: false }));
+      .then((data) => this.setState({ movies: data.Search, loading: false }))
+      .catch((err) => {
+        console.log(err);
+        this.setState({ loading: false });
+      });
   }
 
   render() {
