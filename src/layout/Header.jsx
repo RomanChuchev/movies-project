@@ -9,7 +9,7 @@ function Header() {
           href="https://github.com/RomanChuchev"
           role="button"
         >
-          <button>Repo</button>
+          Repo
         </a>
       </div>
     </nav>
