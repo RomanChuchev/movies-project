@@ -64,3 +64,6 @@ body {
   border: 1px solid transparent;
 }
 
+div {
+	print-color-adjust: initial; 
+	}
