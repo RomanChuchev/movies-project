@@ -3,7 +3,7 @@ function Footer() {
     <footer className="bg-dark text-start text-white">
       <div className="footer-copyright ">
         <div className="position-relative">
-          <div className="container p-2 ">
+          <div className="container p-2 small">
             © {new Date().getFullYear()} Copyright Text
           </div>
           <a
