@@ -11,9 +11,9 @@ function Movie(props) {
     <div className="movie card text-white bg-dark mb-3" id={id}>
       <div>
         {poster === "N/A" ? (
-          <img className="card-img-top" />
+          <img className="card-img-top" alt={title} />
         ) : (
-          <img className="card-img-top" src={poster} />
+          <img className="card-img-top" alt={title} src={poster} />
         )}
       </div>
 
